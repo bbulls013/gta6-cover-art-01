@@ -50,6 +50,14 @@ output directory and writing `dossier.json` with the vendored make.fun library.
 Screenshots were rendered with `tools/render_shots.py`, which mirrors the app's own
 composition logic (same layout fractions, crop math, grades, and lettering).
 
+## Screenshots
+
+Four shots live in `screenshots/`: `1-cover.jpg` is a wide landscape cover
+with the hero layout under the Vice sunset grade, `2-editor.jpg` shows the editor
+itself with a quad poster loaded and a panel selected, `3-cover-square.jpg` is a
+square neon-night cover, and `4-cover-portrait.jpg` is a tall three-strips cover in
+the teal grade.
+
 ## License
 
 MIT — see `LICENSE`.
