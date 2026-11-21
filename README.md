@@ -1,6 +1,8 @@
 # Neon Poster Lab
 
 [![make.fun · gta6-cover-art-01](https://make.fun/badge/gta6-cover-art-01.svg)](https://make.fun/bounty/gta6-cover-art-01)
+[![rank](https://make.fun/badge/gta6-cover-art-01/bbulls013/gta6-cover-art-01/rank.svg)](https://make.fun/bounty/gta6-cover-art-01)
+[![reward](https://make.fun/badge/gta6-cover-art-01/bbulls013/gta6-cover-art-01/reward.svg)](https://make.fun/bounty/gta6-cover-art-01)
 
 A GTA-style multi-panel cover art maker that runs entirely in your browser, offline.
 Load your own photos, frame them across poster panels, pick a colour grade, set the
