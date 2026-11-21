@@ -1,23 +1,105 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cover Snap</title>
-<link rel="stylesheet" href="./style.css">
+<title>Neon Poster Lab — GTA-style cover art maker</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<main class="app">
-  <section class="controls">
-    <h1>Cover Snap</h1>
-    <p>A photo and a caption, made into a square cover.</p>
-    <label>Photo <input id="photo" type="file" accept="image/*"></label>
-    <label>Caption <input id="caption" type="text" maxlength="40" value="Sunset Heist"></label>
-    <button id="export" type="button">Export PNG 1080 x 1080</button>
-    <p id="status" role="status"></p>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">NPL</span>
+    <div>
+      <h1>Neon Poster Lab</h1>
+      <p>Turn your photos into multi-panel cover art. Everything stays on your machine.</p>
+    </div>
+  </div>
+  <div class="top-actions">
+    <label class="btn btn-ghost" for="photo-input">Add photos</label>
+    <input id="photo-input" type="file" accept="image/*" multiple hidden>
+    <button id="export-btn" class="btn btn-primary" type="button">Export PNG</button>
+  </div>
+</header>
+
+<main class="workspace">
+  <section class="stage" aria-label="Cover preview">
+    <div class="stage-frame">
+      <canvas id="preview" width="1080" height="1080"></canvas>
+    </div>
+    <p class="stage-hint">Click a panel to select it. Drag inside a panel to frame the photo. Scroll over a panel to zoom. Arrow keys nudge, + / − zoom, Tab switches panel, double-click resets.</p>
   </section>
-  <canvas id="cover" width="1080" height="1080" aria-label="The cover"></canvas>
+
+  <aside class="panel" aria-label="Cover controls">
+    <section class="group">
+      <h2>Photos</h2>
+      <div id="photo-slots" class="photo-slots"></div>
+      <div class="row">
+        <button id="sample-boulevard" class="btn btn-small" type="button">Sample: Boulevard</button>
+        <button id="sample-pier" class="btn btn-small" type="button">Sample: Pier</button>
+      </div>
+      <p class="note">Up to four photos. Pick a photo, then click a panel to place it there — or use “Fill all”.</p>
+      <div class="row">
+        <button id="fill-all" class="btn btn-small" type="button">Fill all panels</button>
+        <button id="cycle-photos" class="btn btn-small" type="button">Cycle photos</button>
+      </div>
+    </section>
+
+    <section class="group">
+      <h2>Layout</h2>
+      <div id="layout-picker" class="picker" role="radiogroup" aria-label="Panel layout"></div>
+    </section>
+
+    <section class="group">
+      <h2>Selected panel</h2>
+      <label class="slider-label" for="panel-zoom">Zoom <span id="panel-zoom-value">100%</span></label>
+      <input id="panel-zoom" type="range" min="100" max="300" step="1" value="100">
+      <div class="row">
+        <button id="panel-photo-prev" class="btn btn-small" type="button">← Photo</button>
+        <button id="panel-photo-next" class="btn btn-small" type="button">Photo →</button>
+        <button id="panel-reset" class="btn btn-small" type="button">Reset frame</button>
+      </div>
+    </section>
+
+    <section class="group">
+      <h2>Colour grade</h2>
+      <div id="grade-picker" class="picker" role="radiogroup" aria-label="Colour grade"></div>
+      <label class="slider-label" for="grade-strength">Grade strength <span id="grade-strength-value">80%</span></label>
+      <input id="grade-strength" type="range" min="0" max="100" step="1" value="80">
+    </section>
+
+    <section class="group">
+      <h2>Caption</h2>
+      <label class="field-label" for="caption-title">Title</label>
+      <input id="caption-title" type="text" maxlength="42" value="VICE CITY NIGHTS">
+      <label class="field-label" for="caption-subtitle">Subtitle</label>
+      <input id="caption-subtitle" type="text" maxlength="60" value="LEONIDA • EST. 2026">
+      <label class="slider-label" for="caption-size">Lettering size <span id="caption-size-value">100%</span></label>
+      <input id="caption-size" type="range" min="55" max="160" step="1" value="100">
+      <div class="row" role="radiogroup" aria-label="Caption position">
+        <button class="btn btn-small pos-btn" data-pos="top" type="button">Top</button>
+        <button class="btn btn-small pos-btn" data-pos="center" type="button">Centre</button>
+        <button class="btn btn-small pos-btn is-active" data-pos="bottom" type="button">Bottom</button>
+      </div>
+    </section>
+
+    <section class="group">
+      <h2>Poster size</h2>
+      <div id="size-picker" class="picker" role="radiogroup" aria-label="Poster size"></div>
+    </section>
+
+    <section class="group">
+      <h2>Finish</h2>
+      <button id="export-btn-2" class="btn btn-primary btn-wide" type="button">Export PNG</button>
+      <p class="note">Exports at full resolution. No uploads, no accounts, no tracking — the poster is drawn locally.</p>
+    </section>
+  </aside>
 </main>
-<script type="module" src="./src/main.js"></script>
+
+<footer class="foot">
+  <p>Neon Poster Lab is an original fan-made tool. Not affiliated with any game studio. Your photos never leave this page.</p>
+</footer>
+
+<script type="module" src="src/main.js"></script>
 </body>
 </html>
